@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<script>
+    var alumnos=" ";
+   const apellidosEspanoles= [
+    'González', 'Rodríguez', 'Gómez', 'Fernández', 'López', 'Díaz', 'Martínez', 'Pérez', 'García', 'Sánchez',
+    'Romero', 'Sosa', 'Torres', 'Álvarez', 'Ramírez', 'Suárez', 'Rivera', 'Rojas', 'Morales', 'Flores',
+    'Molina', 'Ortiz', 'Delgado', 'Castro', 'Ortega', 'Herrera', 'Ruiz', 'Jimeénez', 'Navarro', 'Vargas',
+    'Benítez', 'Medina', 'Aguilar', 'Núñez', 'Cabrera', 'Reyes', 'Peralta', 'Guerrero', 'Montero', 'León',
+    'Castillo', 'Santiago', 'Dominguez', 'Mendoza', 'Giménez', 'Fuentes', 'Cruz', 'Ávila', 'Ramos', 'Iglesias',
+    'Salazar', 'Moreno', 'Domínguez', 'Martiín', 'Silva', 'Roldán', 'Cortés', 'Paz', 'Peña', 'Salas', 'Arias',
+    'Vega', 'Hernández', 'Gutiérrez', 'Pinto', 'Figueroa', 'Salgado', 'Mendez', 'Bravo', 'Barrios', 'Acosta',
+    'Miranda', 'Lara', 'Pacheco', 'Espinosa', 'Ochoa', 'Carrillo', 'Calderón', 'Ferrer', 'Mercado', 'Aguirre',
+    'Bernal', 'Del Valle', 'Ponce', 'Tovar', 'Valencia', 'Escobar', 'Valenzuela', 'Luna', 'Villa', 'Cruz',
+    'Calvo', 'Castañeda', 'Quintero', 'Zamora', 'Montes', 'Osorio', 'Blanco', 'Salinas', 'Cardenas', 'Paz',
+    'Guerra', 'Bustamante', 'Estrada', 'Santana', 'Valle', 'Bonilla', 'Campos', 'Costa', 'Pardo', 'Villar',
+    'Gallardo', 'Olivares', 'Moya', 'Correa', 'Alonso', 'Peñaloza', 'Rubio', 'Córdoba', 'Serrano', 'Garrido',
+    'Méndez', 'Ríos', 'Arroyo', 'Peñuela', 'Segura', 'Bravo', 'Herrera', 'Dávila', 'Fierro', 'Bañuelos', 'Baeza',
+    'Zúñiga', 'Zambrano', 'Chávez', 'Guzmán', 'Maldonado', 'Carrasco', 'Guillén', 'Aranda', 'Téllez', 'Santos',
+    'Landa', 'Esquivel', 'Quintero', 'Herrero', 'Alvarado', 'Olivas', 'Espinoza', 'Toledo', 'Agüero', 'Arce',
+    'Lázaro', 'Palacios', 'Leyva', 'Padilla', 'Arellano', 'Munguía', 'Duarte', 'Rico', 'Uribe', 'Rubio', 'Aguado',
+    'Galindo', 'Beltrán', 'Rocha', 'Cárdenas', 'Pizarro', 'Carvajal', 'Mata', 'Lucero', 'Vásquez', 'Terán',
+    'Valero', 'Amador', 'Montenegro', 'Palma', 'Ferrer', 'Osuna', 'Mendoza', 'Medina', 'Escudero', 'Nieves',
+    'Bolaños', 'Sepúlveda', 'Crespo', 'Rico', 'Fierro', 'Gavilán', 'Ordoñez', 'Hidalgo', 'Osorio', 'Bueno',
+    'Figueroa', 'Casas', 'Padrón', 'Loyola', 'Campa', 'Carrillo', 'Gudiño', 'Corral', 'Salamanca', 'Dávila',
+    'Noriega', 'Echeverría', 'Maldonado', 'Escalante', 'Toro', 'Villanueva', 'Rosales', 'Armas', 'Grajales',
+    'Castañeda', 'Mancilla', 'Ramos', 'Arévalo', 'Suazo', 'Del Río', 'Garcilazo', 'Orduña', 'Zarate', 'Barajas'
+];
+
+const apellidosFranceses= [
+    'Martin', 'Bernard', 'Dubois', 'Thomas', 'Robert', 'Richard', 'Petit', 'Durand', 'Leroy', 'Moreau',
+    'Simon', 'Laurent', 'Lefebvre', 'Michel', 'Garcia', 'David', 'Bertrand', 'Roux', 'Vincent', 'Fournier',
+    'Morel', 'Girard', 'Andre', 'Lefevre', 'Mercier', 'Dupont', 'Lambert', 'Bonnet', 'Francois', 'Martinez',
+    'Legrand', 'Garnier', 'Faure', 'Rousseau', 'Blanc', 'Guerin', 'Muller', 'Henry', 'Roussel', 'Nicolas',
+    'Perrin', 'Morin', 'Mathieu', 'Clement', 'Gauthier', 'Dumont', 'Lopez', 'Fontaine', 'Chevalier', 'Robin',
+    'Masson', 'Sanchez', 'Gerard', 'Nguyen', 'Boyer', 'Denis', 'Lemaire', 'Duval', 'Joly', 'Roger', 'Huet',
+    'Colin', 'Jacquet', 'Vidal', 'Benoit', 'Barbier', 'Marchand', 'Rolland', 'Philippe', 'Leclerc', 'Guillaume',
+    'Lacroix', 'Caron', 'Maillard', 'Brun', 'Picard', 'Roger', 'Roy', 'Huet', 'Leclercq', 'Renard', 'Meyer',
+    'Jean', 'Dufour', 'Perez', 'Marchal', 'Blanchard', 'Hubert', 'Fabre', 'Lemoine', 'Dumas', 'Brunet', 'Schmitt',
+    'Fernandez', 'Pelletier', 'Weber', 'Delaunay', 'Leroux', 'Gonzalez', 'Gauthier', 'Menard', 'Boucher', 'Deschamps',
+    'Bertin', 'Le Gall', 'Dufresne', 'Desjardins', 'Adam', 'Collet', 'Leclerc', 'Poulain', 'Renault', 'Lecomte',
+    'Rouxel', 'Hebert', 'Guillot', 'Delaunay', 'Maillard', 'Roger', 'Fabre', 'Jacques', 'Philippe', 'Guilbert',
+    'Leclercq', 'Renard', 'Lemaire', 'Riviere', 'Pierre', 'Delepine', 'Carlier', 'Louis', 'Mouton', 'Dutilleul',
+    'Guillet', 'Adam', 'Charpentier', 'Bisson', 'Deschamps', 'Dujardin', 'Guerin', 'Aubert', 'Delannoy', 'Renaud',
+    'Hamon', 'Legros', 'Rodrigues', 'Lebrun', 'Dumont', 'Jacquot', 'Desrosiers', 'Labbe', 'Prevost', 'Leger',
+    'Carre', 'Blanchet', 'Lenoir', 'Neveu', 'Hoarau', 'Herve', 'Pons', 'Charpentier', 'Bisson', 'Vasseur', 'Desrosiers',
+    'Bourgeois', 'Carpentier', 'Carlier', 'Monnier', 'Fleury', 'Prevost', 'Lamy', 'Lelievre', 'Baron', 'Lejeune',
+    'Gros', 'Lepage', 'Adam', 'Poirier', 'Coulon', 'Perrault', 'Roussel', 'Joubert', 'Peltier', 'Hamelin', 'Louvet',
+    'Bocquet', 'Riviere', 'Pierre', 'Breton', 'Delaunay', 'Baron', 'Lejeune', 'Hamel', 'Lecomte', 'Barre', 'Charbonnier',
+    'Julien', 'Giraud', 'Colin', 'Guichard', 'Benard', 'Girault', 'Blondel', 'Lebon', 'Hubert', 'Menard', 'Bouvet'
+];
+
+    const nombreAmericano = [
+    'James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Joseph', 'Charles', 'Thomas',
+    'Christopher', 'Daniel', 'Matthew', 'Anthony', 'Donald', 'Mark', 'Paul', 'Steven', 'Andrew', 'Kenneth',
+    'George', 'Joshua', 'Kevin', 'Brian', 'Edward', 'Ronald', 'Timothy', 'Jason', 'Jeffrey', 'Ryan',
+    'Jacob', 'Gary', 'Nicholas', 'Eric', 'Jonathan', 'Stephen', 'Larry', 'Justin', 'Scott', 'Brandon',
+    'Benjamin', 'Samuel', 'Frank', 'Gregory', 'Raymond', 'Alexander', 'Patrick', 'Jack', 'Dennis',
+    'Jerry', 'Tyler', 'Aaron', 'Jose', 'Henry', 'Adam', 'Douglas', 'Nathan', 'Peter', 'Zachary', 
+    'Walter', 'Kyle', 'Harold', 'Jeremy', 'Terry', 'Keith', 'Johnny', 'Roy', 'Dennis', 'Albert',
+    'Arthur', 'Carl', 'Gerald', 'Roger', 'Lawrence', 'Bruce', 'Joe', 'Billy', 'Willie', 'Bryan',
+    'Tim', 'Willard', 'Todd', 'Ronnie', 'Stanley', 'Eugene', 'Lee', 'Randy', 'Leonard', 'Vincent',
+    'Eddie', 'Phillip', 'Patrick', 'Luis', 'Martin', 'Herman', 'Marvin', 'Ricky', 'Howard', 'Edwin',
+    'Juan', 'Alfred', 'Alberto', 'Elmer', 'Mitchell', 'Curtis', 'Clarence', 'Craig', 'Randall', 'Lloyd',
+    'Maurice', 'Theodore', 'Clifford', 'Fred', 'Darrell', 'Kurt', 'Frederick', 'Joel', 'Glenn', 'Philip',
+    'Tommy', 'Duane', 'Rodney', 'Everett', 'Corey', 'Franklin', 'Troy', 'Derrick', 'Darren', 'Lonnie',
+    'Lester', 'Antonio', 'Gordon', 'Albert', 'Micheal', 'Jerome', 'Jeffery', 'Terrence', 'Milton', 'Dwayne',
+    'Clyde', 'Jessie', 'Lynn', 'Rodger', 'Daryl', 'Kirk', 'Perry', 'Max', 'Dana', 'Mitch', 'Tony',
+    'Nick', 'Shawn', 'Darryl', 'Alex', 'Alvin', 'Rick', 'Shane', 'Kent', 'Terrance', 'Raul', 'Marco',
+    'Arnold', 'Adrian', 'Karl', 'Terrill', 'Cedric', 'Reggie', 'Roland', 'Rudy', 'Damon', 'Sheldon',
+    'Fernando', 'Ted', 'Gilbert', 'Chester', 'Jeff', 'Nathaniel', 'Ricardo', 'Clayton', 'Mickey', 'Armando',
+    'Brent', 'Rufus', 'Arturo', 'Garrett', 'Leo', 'Willis', 'Preston', 'Orlando', 'Erick', 'Irving',
+    'Ramon', 'Aubrey', 'Wallace', 'Barry', 'Kerry', 'Gerard', 'Dwight', 'Israel', 'Tyrone', 'Glen',
+    'Gabriel', 'Rickie', 'Simon', 'Neal', 'Freddie', 'Bennie', 'Hal', 'Lorenzo', 'Cameron', 'Avery',
+    'Mary', 'Patricia', 'Jennifer', 'Linda', 'Elizabeth', 'Barbara', 'Susan', 'Jessica', 'Sarah', 'Karen',
+    'Nancy', 'Lisa', 'Betty', 'Margaret', 'Sandra', 'Ashley', 'Kimberly', 'Emily', 'Donna', 'Michelle',
+    'Dorothy', 'Carol', 'Amanda', 'Melissa', 'Deborah', 'Stephanie', 'Rebecca', 'Laura', 'Sharon', 'Cynthia',
+    'Kathleen', 'Amy', 'Shirley', 'Angela', 'Helen', 'Anna', 'Brenda', 'Pamela', 'Nicole', 'Ruth', 'Katherine',
+    'Samantha', 'Christine', 'Emma', 'Catherine', 'Debra', 'Virginia', 'Rachel', 'Carolyn', 'Janet', 'Maria',
+    'Heather', 'Diane', 'Julie', 'Joyce', 'Victoria', 'Kelly', 'Christina', 'Lauren', 'Joan', 'Evelyn',
+    'Olivia', 'Judith', 'Megan', 'Cheryl', 'Andrea', 'Hannah', 'Martha', 'Jacqueline', 'Frances', 'Gloria',
+    'Ann', 'Teresa', 'Kathryn', 'Sara', 'Janice', 'Jean', 'Alice', 'Madison', 'Doris', 'Abigail', 'Julia',
+    'Judy', 'Grace', 'Denise', 'Amber', 'Marilyn', 'Beverly', 'Danielle', 'Theresa', 'Sophia', 'Marie',
+    'Diana', 'Brittany', 'Natalie', 'Isabella', 'Charlotte', 'Rose', 'Alexis', 'Kayla', 'Addison', 'Sylvia',
+    'Holly', 'Melanie', 'Loretta', 'Yvonne', 'Christy', 'Suzanne', 'Monica', 'Cassandra', 'Christina', 'Belinda',
+    'Emma', 'Pat', 'Sue', 'Mel', 'Nikki', 'Kim', 'Liz', 'Allison', 'Jen', 'Jo', 'Jessie', 'Lexi', 'Jordan'
+    ];
+
+    const nombreJapones = [
+    'Sakura', 'Yuki', 'Haru', 'Aiko', 'Hana', 'Naomi', 'Kenji', 'Akira', 'Rina', 'Hiroshi',
+    'Emi', 'Kaito', 'Sora', 'Miyuki', 'Yuna', 'Haruki', 'Kiko', 'Takashi', 'Riko', 'Mio',
+    'Tsubasa', 'Yui', 'Yoshiko', 'Takumi', 'Kazuki', 'Natsu', 'Makoto', 'Aya', 'Ren', 'Ayumi',
+    'Yusuke', 'Mari', 'Keiko', 'Ayame', 'Ryu', 'Asuka', 'Haruka', 'Misaki', 'Yumi', 'Shinji',
+    'Nana', 'Yusaku', 'Minako', 'Kazuya', 'Chihiro', 'Yuta', 'Satoshi', 'Sakiko', 'Taro', 'Yoshio',
+    'Aki', 'Arisa', 'Kenta', 'Miki', 'Tetsuya', 'Mayu', 'Ryota', 'Yuko', 'Kaori', 'Jun',
+    'Eri', 'Toshiro', 'Yoshi', 'Yoshiko', 'Sho', 'Natsumi', 'Koki', 'Nori', 'Ryoko', 'Daisuke',
+    'Yukiko', 'Daichi', 'Kanako', 'Ryoko', 'Shota', 'Narumi', 'Taichi', 'Ayano', 'Yuichi', 'Rie',
+    'Masaru', 'Aina', 'Haruna', 'Kei', 'Mariko', 'Toshi', 'Noriko', 'Fumiko', 'Yui', 'Aoi',
+    'Takako', 'Shiori', 'Takao', 'Yukari', 'Kyoko', 'Seiji', 'Ryoko', 'Koji', 'Yoshimi', 'Rika',
+    'Hikaru', 'Mitsuru', 'Asami', 'Tomoko', 'Hiroko', 'Noboru', 'Yoko', 'Shunsuke', 'Shizuka', 'Atsuko',
+    'Hideki', 'Kazumi', 'Ryuta', 'Asami', 'Tsuyoshi', 'Kiyomi', 'Kotaro', 'Sayuri', 'Reina', 'Hayato',
+    'Sakiko', 'Yoshie', 'Hitomi', 'Satoshi', 'Kyosuke', 'Erika', 'Yuki', 'Naoko', 'Hideaki', 'Saki',
+    'Yasuhiro', 'Maki', 'Yuko', 'Yoshihiro', 'Momoko', 'Shuichi', 'Natsuko', 'Takayuki', 'Saori', 'Ryo',
+    'Nao', 'Tadashi', 'Megumi', 'Kazuhiro', 'Kaede', 'Kiyoko', 'Tetsuo', 'Yukie', 'Tomoya', 'Nami',
+    'Tomomi', 'Junko', 'Koichi', 'Kazuko', 'Mitsuko', 'Asuka', 'Kazuo', 'Yumiko', 'Mika', 'Mitsuko',
+    'Ryoichi', 'Nanami', 'Kazuo', 'Midori', 'Hiroshi', 'Sachiko', 'Yukino', 'Kohei', 'Kazue', 'Rin',
+    'Koharu', 'Akane', 'Yumi', 'Hinata', 'Kensuke', 'Asumi', 'Takayuki', 'Chie', 'Kojiro', 'Hina',
+    'Satoshi', 'Kumiko', 'Koichi', 'Shoko', 'Takeshi', 'Miharu', 'Ryohei', 'Michiko', 'Shohei', 'Yasuko',
+    'Nobuko', 'Miu', 'Shingo', 'Reiko', 'Takashi', 'Ayaka', 'Hideyuki', 'Sakura', 'Yoshihiko', 'Mao',
+    'Kazuki', 'Yuriko', 'Takuma', 'Yasushi', 'Aya', 'Ryosuke', 'Nanako', 'Koji', 'Ryoko', 'Asuka',
+    'Tetsuya', 'Chinatsu', 'Atsushi', 'Minami', 'Takako', 'Shun', 'Kaoru', 'Ryosuke', 'Akihiko', 'Hikari'
+    ];
+
+    
+    
+    function generar(){
+        var opcion = document.getElementById("opcion").value;
+				var num = parseInt(document.getElementById("num").value);
+				if (num < 1) { num = 5;  document.getElementById("num").value = 5; }
+        if (opcion == "sql"){
+				alumnos = "CREATE DATABASE IF NOT EXISTS generadorAlumnos;<br>" + 
+          "USE generadorAlumnos;<br>" + 
+          "CREATE TABLE IF NOT EXISTS alumnos(<br>" +
+          "&emsp;expediente INT UNSIGNED NOT NULL UNIQUE, <br>" + 
+          "&emsp;apellidoPaterno VARCHAR(255) NOT NULL, <br>" + 
+          "&emsp;apellidoMaterno VARCHAR(255), <br>" + 
+          "&emsp;nombres VARCHAR(255) NOT NULL, <br>" + 
+          "&emsp;correo VARCHAR(255) NOT NULL UNIQUE<br>" + 
+          ");<br>" +
+          "DELETE FROM alumnos;<br>" +   
+          "INSERT INTO alumnos(expediente, apellidoPaterno, apellidoMaterno, nombres, correo) VALUES<br>", expediente = 222220993;
+				for (let i=1; i<(num + 1); i++){
+					alumnos += "&emsp;(" + (expediente) + ", '" + (apellidosFranceses[Math.floor(Math.random() * 199) + 1]) + "', '" + (apellidosEspanoles[Math.floor(Math.random() * 199) + 1]) + "', '" + (nombreAmericano[Math.floor(Math.random() * 220) + 1]) + " " + (nombreJapones[Math.floor(Math.random() * 209) + 1]) + "', '" + (expediente++) + "@universidad.mx" + "')";
+					if (i == num) {
+						alumnos += ";";
+					} else {
+						alumnos += ",<br>";
+					}
+				}
+      }
+      else if (opcion == "csv"){}
+      else {}
+      
+				document.getElementById("salida").innerHTML = alumnos;
+			}
+			
+			function generarSQL(){
+			var opcion = document.getElementById("opcion").value;
+    			var extension = "";
+    			if (opcion == "txt") {
+      				extension = ".sql";
+    			} else if (opcion == "csv"){
+      				extension = ".csv";
+    			} else if (opcion == "json"){
+      				extension = ".json";
+    			}
+			  var archivo = document.createElement('a');
+    		var salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+        if (salida == ""){
+            generar();
+            salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+        }
+    		archivo.setAttribute('href', 'data:text/plane;charset=utf-8,'+ encodeURIComponent(salida));
+    		archivo.setAttribute('download', "universidad.sql");
+    		archivo.style.display = 'none';
+    		document.body.appendChild(archivo);
+    		archivo.click();
+    		document.body.removeChild(archivo);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="Generar alumnos" onclick="generar()">
+		<input type="button" value="Generar SQL" onclick="generarSQL()">
+		<input type="number" id="num" placeholder="Numero de entradas" value="5">
+		<select id="opcion" name="opcion">
+                      <option value="sql">SQL</option>
+                      <option value="csv">CSV</option>
+		      <option value="json">JSON</option>
+                </select>
+		<p id="salida"></p>
+	</body>
+</html>
