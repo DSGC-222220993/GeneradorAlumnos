@@ -119,10 +119,12 @@ const apellidosFranceses= [
     
     function generar(){
         var opcion = document.getElementById("opcion").value;
-				var num = parseInt(document.getElementById("num").value);
-				if (num < 1) { num = 5;  document.getElementById("num").value = 5; }
+	var num = parseInt(document.getElementById("num").value);
+	if (num < 1) { 
+		num = 5;  document.getElementById("num").value = 5;
+	}
         if (opcion == "sql"){
-				alumnos = "CREATE DATABASE IF NOT EXISTS generadorAlumnos;<br>" + 
+	alumnos = "CREATE DATABASE IF NOT EXISTS generadorAlumnos;<br>" + 
           "USE generadorAlumnos;<br>" + 
           "CREATE TABLE IF NOT EXISTS alumnos(<br>" +
           "&emsp;expediente INT UNSIGNED NOT NULL UNIQUE, <br>" + 
@@ -133,44 +135,45 @@ const apellidosFranceses= [
           ");<br>" +
           "DELETE FROM alumnos;<br>" +   
           "INSERT INTO alumnos(expediente, apellidoPaterno, apellidoMaterno, nombres, correo) VALUES<br>", expediente = 222220993;
-				for (let i=1; i<(num + 1); i++){
-					alumnos += "&emsp;(" + (expediente) + ", '" + (apellidosFranceses[Math.floor(Math.random() * 199) + 1]) + "', '" + (apellidosEspanoles[Math.floor(Math.random() * 199) + 1]) + "', '" + (nombreAmericano[Math.floor(Math.random() * 220) + 1]) + " " + (nombreJapones[Math.floor(Math.random() * 209) + 1]) + "', '" + (expediente++) + "@universidad.mx" + "')";
-					if (i == num) {
-						alumnos += ";";
-					} else {
-						alumnos += ",<br>";
-					}
+			for (let i=1; i<(num + 1); i++){
+				alumnos += "&emsp;(" + (expediente) + ", '" + (apellidosFranceses[Math.floor(Math.random() * 199) + 1]) + "', '" + (apellidosEspanoles[Math.floor(Math.random() * 199) + 1]) + "', '" + (nombreAmericano[Math.floor(Math.random() * 220) + 1]) + " " + (nombreJapones[Math.floor(Math.random() * 209) + 1]) + "', '" + (expediente++) + "@universidad.mx" + "')";
+				if (i == num) {
+					alumnos += ";";
+				} else {
+					alumnos += ",<br>";
 				}
+			}
       }
       else if (opcion == "csv"){}
       else {}
       
-				document.getElementById("salida").innerHTML = alumnos;
-			}
+	document.getElementById("salida").innerHTML = alumnos;
+	}
 			
-			function generarSQL(){
-			var opcion = document.getElementById("opcion").value;
-    			var extension = "";
-    			if (opcion == "txt") {
-      				extension = ".sql";
-    			} else if (opcion == "csv"){
-      				extension = ".csv";
-    			} else if (opcion == "json"){
-      				extension = ".json";
-    			}
-			  var archivo = document.createElement('a');
+	function generarSQL(){
+		var opcion = document.getElementById("opcion").value;
+    		var extension = "";
+    		if (opcion == "txt") {
+      			extension = ".sql";
+    		} else if (opcion == "csv"){
+      			extension = ".csv";
+    		} else if (opcion == "json"){
+      			extension = ".json";
+    		}
+		
+		var archivo = document.createElement('a');
     		var salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
-        if (salida == ""){
-            generar();
-            salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
-        }
+	        if (salida == ""){
+	            generar();
+	            salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+	        }
     		archivo.setAttribute('href', 'data:text/plane;charset=utf-8,'+ encodeURIComponent(salida));
     		archivo.setAttribute('download', "universidad.sql");
     		archivo.style.display = 'none';
     		document.body.appendChild(archivo);
     		archivo.click();
     		document.body.removeChild(archivo);
-			}
+	}
 		</script>
 	</head>
 	<body>
